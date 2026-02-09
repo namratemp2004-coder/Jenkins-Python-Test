@@ -1,11 +1,22 @@
 pipeline {
     agent any
 
+    options {
+        skipDefaultCheckout(true)   // 👈 IMPORTANT
+    }
+
     parameters {
         string(name: 'BUILD_TYPE', defaultValue: '', description: 'Detected build type')
     }
 
     stages {
+
+        stage('Checkout') {
+            steps {
+                cleanWs()          // 👈 clean old junk (venv, __pycache__, etc.)
+                checkout scm       // 👈 clone repo ONCE, clean
+            }
+        }
 
         stage('Discovery') {
             steps {
