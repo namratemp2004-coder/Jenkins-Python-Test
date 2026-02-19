@@ -4,3 +4,10 @@ version = "0.1.0"
 
 [tool.setuptools]
 packages = ["app"]
+
+[tool.poetry]
+name = "jenkins-python-test"
+version = "0.1.0"
+description = ""
+authors = ["..."]
+packages = [{include = "jenkins_python_test"}]
